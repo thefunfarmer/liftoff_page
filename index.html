@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Cloud</title>
+  <style>
+    body {
+      background: #0b0c2a;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+      padding: 5em 1em;
+    }
+    .rocket {
+      width: 80px;
+      margin: 2em auto;
+      transition: transform 2s ease-in-out;
+    }
+    .launching {
+      transform: translateY(-500px) rotate(-10deg);
+    }
+    button {
+      padding: 1em 2em;
+      font-size: 1.2em;
+      background: #00c3ff;
+      border: none;
+      border-radius: 0.5em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 Welcome to the Family Cloud!</h1>
+  <p>Ready for lift-off?</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Rocket_icon.svg" alt="Rocket" class="rocket" id="rocket" />
+  <br />
+  <button onclick="launch()">Launch Cloud</button>
+
+  <script>
+    function launch() {
+      document.getElementById('rocket').classList.add('launching');
+      setTimeout(() => {
+        window.location.href = "https://nx73816.your-storageshare.de";
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
