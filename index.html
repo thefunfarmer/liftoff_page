@@ -3,46 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Family Cloud</title>
+  <title>Doors of Durin</title>
   <style>
     body {
-      background: #0b0c2a;
-      color: white;
+      background: #000;
+      color: #ccc;
+      font-family: 'Georgia', serif;
       text-align: center;
-      font-family: sans-serif;
-      padding: 5em 1em;
+      padding: 2em;
     }
-    .rocket {
-      width: 80px;
+    h1, p {
+      color: #9cc;
+      text-shadow: 0 0 8px #4cf;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+    .inscription {
+      font-size: 1.1em;
+      white-space: pre-line;
+      margin: 1em auto 2em;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    img.door {
+      width: 300px;
       margin: 2em auto;
-      transition: transform 2s ease-in-out;
-    }
-    .launching {
-      transform: translateY(-500px) rotate(-10deg);
+      display: block;
+      filter: drop-shadow(0 0 10px #4cf);
+      transition: filter 0.5s ease;
     }
     button {
-      padding: 1em 2em;
+      padding: 1em 2.5em;
+      margin-top: 2em;
       font-size: 1.2em;
-      background: #00c3ff;
-      border: none;
-      border-radius: 0.5em;
+      background: transparent;
+      border: 2px solid #4cf;
+      color: #4cf;
+      border-radius: 5px;
       cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: background 0.3s, color 0.3s;
+    }
+    button:hover {
+      background: #4cf;
+      color: #000;
+    }
+    .fade-out {
+      animation: fadeOut 2s forwards;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🚀 Welcome to the Family Cloud!</h1>
-  <p>Ready for lift-off?</p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Rocket_icon.svg" alt="Rocket" class="rocket" id="rocket" />
+  <h1>Ennyn Durin Aran Moria</h1>
+  <div class="inscription">
+    Pedo mellon a minno.<br>
+    Im Narvi hain echant.<br>
+    Celebrimbor o Eregion teithant i thiw hin.<br><br>
+    The Doors of Durin, Lord of Moria.<br>
+    Speak, friend, and enter.<br>
+    I, Narvi, made them.<br>
+    Celebrimbor of Hollin drew these signs.
+  </div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Moria_gate.svg/600px-Moria_gate.svg.png" alt="Doors of Durin" class="door" id="door" />
   <br />
-  <button onclick="launch()">Launch Cloud</button>
+  <button onclick="enter()">mellon</button>
 
   <script>
-    function launch() {
-      document.getElementById('rocket').classList.add('launching');
+    function enter() {
+      document.body.classList.add('fade-out');
       setTimeout(() => {
         window.location.href = "https://nx73816.your-storageshare.de";
-      }, 2500);
+      }, 2000);
     }
   </script>
 </body>
