@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Doors of Caspar</title>
+  <title>La mi inä!</title>
   <style>
     body {
       background: #000;
@@ -12,50 +12,23 @@
       text-align: center;
       padding: 2em;
     }
-    h1, p {
-      color: #9cc;
-      text-shadow: 0 0 8px #4cf;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-    .inscription {
-      font-size: 1.1em;
-      white-space: pre-line;
-      margin: 1em auto 2em;
-      max-width: 600px;
-      line-height: 1.6;
-    }
-    .mirror {
-      font-family: "Tengwar Annatar", "Tengwar Quenya", serif;
-      font-size: 1.5em;
-      transform: scaleY(-1);
-      opacity: 0.4;
-      text-shadow: 0 0 8px #4cf;
-      margin-top: 1em;
-    }
     img.door {
-      width: 300px;
-      margin: 2em auto;
+      max-width: 90%;
+      height: auto;
       display: block;
+      margin: 0 auto;
       filter: drop-shadow(0 0 15px #4cf);
       animation: glowPulse 4s ease-in-out infinite;
-      transition: filter 0.3s;
-    }
-    img.door:hover {
-      filter: drop-shadow(0 0 25px #6ef);
     }
     button {
-      padding: 1em 2.5em;
       margin-top: 2em;
-      font-size: 1.2em;
+      padding: 1em 3em;
+      font-size: 1.5em;
       background: transparent;
       border: 2px solid #4cf;
       color: #4cf;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      text-transform: uppercase;
       letter-spacing: 2px;
       transition: background 0.3s, color 0.3s;
     }
@@ -82,21 +55,8 @@
   </style>
 </head>
 <body>
-  <div class="inscription">
-    The Door of Caspar, Lord of Nos Faun.<br>
-    Speak: La mi inä! And enter.<br>
-    I, 4o, made them.<br>
-    Mischiefsden of Etsy drew these signs.
-    <div class="mirror">
-        <br>
-          !  .<br>
-      , 4,  .<br>
-            .
-    </div>
-  </div>
-  <img src="moria_gate.svg" alt="Doors of Durin" class="door" id="door" />
-  <br />
-  <button onclick="enter()">mellon</button>
+  <img src="door.svg" alt="Elvish Door" class="door" />
+  <button onclick="enter()">La mi inä!</button>
 
   <script>
     function enter() {
