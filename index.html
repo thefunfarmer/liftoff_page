@@ -8,34 +8,25 @@
     <h1>Nextcloud WebDAV Test for funfarmer</h1>
     <ul id="file-list"></ul>
 
-    <script>
-        async function fetchFiles() {
-            const password = prompt("Enter your Nextcloud app password:");
-            const authHeader = "Basic " + btoa("funfarmer:" + password);
+   <script>
+async function fetchFiles() {
+    const url = "/dav-proxy.php"; // now calls your proxy
+    const response = await fetch(url, {
+        method: "GET"
+    });
 
-            const url = "https://nx73816.your-storageshare.de/remote.php/dav/files/funfarmer/";
+    if (!response.ok) {
+        throw new Error("Network response was not ok");
+    }
 
-            const response = await fetch(url, {
-                method: "PROPFIND",
-                headers: {
-                    "Authorization": authHeader,
-                    "Depth": "1"
-                }
-            });
+    const text = await response.text();
+    console.log("Got WebDAV response:", text);
 
-            const text = await response.text();
-            console.log("Response XML:", text);
+    // Do your XML parsing or UI updates here
+}
 
-            const matches = [...text.matchAll(/<d:href>(.*?)<\/d:href>/g)];
-            const list = document.getElementById("file-list");
-            matches.forEach(m => {
-                const item = document.createElement("li");
-                item.textContent = decodeURIComponent(m[1]);
-                list.appendChild(item);
-            });
-        }
+fetchFiles();
+</script>
 
-        fetchFiles();
-    </script>
 </body>
 </html>
