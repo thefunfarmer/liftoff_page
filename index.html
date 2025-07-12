@@ -1,70 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La mi inä!</title>
-  <style>
-    body {
-      background: #000;
-      color: #ccc;
-      font-family: 'Georgia', serif;
-      text-align: center;
-      padding: 2em;
-    }
-    img.door {
-      max-width: 90%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      filter: drop-shadow(0 0 15px #4cf);
-      animation: glowPulse 4s ease-in-out infinite;
-    }
-    button {
-      margin-top: 2em;
-      padding: 1em 3em;
-      font-size: 1.5em;
-      background: transparent;
-      border: 2px solid #4cf;
-      color: #4cf;
-      border-radius: 8px;
-      cursor: pointer;
-      letter-spacing: 2px;
-      transition: background 0.3s, color 0.3s;
-    }
-    button:hover {
-      background: #4cf;
-      color: #000;
-    }
-    .fade-out {
-      animation: fadeOut 2s forwards;
-    }
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-      }
-    }
-    @keyframes glowPulse {
-      0%, 100% {
-        filter: drop-shadow(0 0 15px #4cf);
-      }
-      50% {
-        filter: drop-shadow(0 0 25px #6ef);
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <title>Nextcloud WebDAV Test for funfarmer</title>
 </head>
 <body>
-  <img src="door.svg" alt="Elvish Door" class="door" />
-  <button onclick="enter()">La mi inä!</button>
+    <h1>Nextcloud WebDAV Test for funfarmer</h1>
+    <ul id="file-list"></ul>
 
-  <script>
-    function enter() {
-      document.body.classList.add('fade-out');
-      setTimeout(() => {
-        window.location.href = "https://nx73816.your-storageshare.de";
-      }, 2000);
-    }
-  </script>
+    <script>
+        async function fetchFiles() {
+            const password = prompt("Enter your Nextcloud app password:");
+            const authHeader = "Basic " + btoa("funfarmer:" + password);
+
+            const url = "https://nx73816.your-storageshare.de/remote.php/dav/files/funfarmer/";
+
+            const response = await fetch(url, {
+                method: "PROPFIND",
+                headers: {
+                    "Authorization": authHeader,
+                    "Depth": "1"
+                }
+            });
+
+            const text = await response.text();
+            console.log("Response XML:", text);
+
+            const matches = [...text.matchAll(/<d:href>(.*?)<\/d:href>/g)];
+            const list = document.getElementById("file-list");
+            matches.forEach(m => {
+                const item = document.createElement("li");
+                item.textContent = decodeURIComponent(m[1]);
+                list.appendChild(item);
+            });
+        }
+
+        fetchFiles();
+    </script>
 </body>
 </html>
