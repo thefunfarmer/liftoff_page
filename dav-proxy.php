@@ -5,7 +5,7 @@ header("Content-Type: application/xml");
 
 // Basic Auth credentials
 $user = 'funfarmer';
-$pass = 'YOUR_APP_PASSWORD';  // <<< put your app password here
+$pass = 'DaRkb-RTxcj-4L3QE-eRYWL-BHb3q';  // <<< put your app password here
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://nx73816.your-storageshare.de/remote.php/dav/files/funfarmer/");
